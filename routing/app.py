@@ -1,4 +1,5 @@
 
+import os
 from datetime import date
 
 from fastapi import FastAPI, Query, HTTPException
@@ -23,14 +24,21 @@ app = FastAPI(
 
 
 # ---------------------------------------
-# Allow React frontend to connect
+# Allow the local Vite app and the configured deployed frontend to connect.
+# Set ALLOWED_ORIGINS to a comma-separated list in the journey API host.
 # ---------------------------------------
+ALLOWED_ORIGINS = [
+    origin.strip()
+    for origin in os.getenv(
+        "ALLOWED_ORIGINS",
+        "http://localhost:5173,http://127.0.0.1:5173",
+    ).split(",")
+    if origin.strip()
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173"
-    ],
+    allow_origins=ALLOWED_ORIGINS,
     allow_methods=["GET"],
     allow_headers=["*"],
 )

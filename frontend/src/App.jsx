@@ -3,7 +3,9 @@ import { useState } from "react";
 import "./App.css";
 import CrowdLens from "./components/CrowdLens";
 
-const API = "http://127.0.0.1:8001";
+const API =
+  import.meta.env.VITE_JOURNEY_API_URL ||
+  "http://127.0.0.1:8001";
 
 function App() {
   const [fromQuery, setFromQuery] = useState("");

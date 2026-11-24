@@ -35,6 +35,10 @@ cd frontend && npm ci && npm run dev
 
 The crowding API requires `data/processed/crowding_profiles.json`, created from the documented batch pipeline. See [backend/crowding/README.md](backend/crowding/README.md) and [docs/member2-integration.md](docs/member2-integration.md).
 
+## Deployment configuration
+
+Deploy `frontend/` as a Vite project and set `VITE_JOURNEY_API_URL` to the public journey-planner API URL before building. The journey API must set `CROWD_API_BASE_URL` to the public crowding API URL and set `ALLOWED_ORIGINS` to the Vercel frontend URL. Copy the tracked `.env.example` files as a reference; do not commit real environment values.
+
 ## Evidence and validation
 
 The chronological validation uses October 1–21 for training and October 22–31 for evaluation. It evaluates sampled ticket demand only; it does not validate physical occupancy. See [docs/crowding-validation.md](docs/crowding-validation.md) and [docs/crowding-validation.json](docs/crowding-validation.json).
