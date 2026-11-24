@@ -1,0 +1,74 @@
+{
+  "split": {
+    "training_dates": [
+      "2026-10-01",
+      "2026-10-21"
+    ],
+    "evaluation_dates": [
+      "2026-10-22",
+      "2026-10-31"
+    ],
+    "cutoff_date": "2026-10-22"
+  },
+  "unit": "daily sampled segment demand (ticket-observed, not physical occupancy)",
+  "train_segment_rows": 4794102,
+  "evaluation_segment_rows": 2486742,
+  "time_aware_profile_rows": 1479033,
+  "baseline_profile_rows": 64506,
+  "model": {
+    "rows": 2484210,
+    "mae": 0.828794,
+    "median_absolute_error": 0.5,
+    "coverage": 0.998982,
+    "error_quantiles": {
+      "p50": 0.5,
+      "p90": 2.0,
+      "p95": 3.0
+    }
+  },
+  "baseline_segment_history": {
+    "rows": 2484210,
+    "mae": 0.92758,
+    "median_absolute_error": 0.0,
+    "coverage": 0.998982
+  },
+  "fair_time_aware_vs_baseline": {
+    "rows": 2189094,
+    "time_aware_mae": 0.903316,
+    "baseline_mae": 1.01542
+  },
+  "prediction_source_breakdown": {
+    "time_aware_exact": {
+      "rows": 2189094,
+      "mae": 0.903316,
+      "median_absolute_error": 0.5
+    },
+    "segment_history_fallback": {
+      "rows": 295116,
+      "mae": 0.276008,
+      "median_absolute_error": 0.0
+    },
+    "unsupported": {
+      "rows": 2532,
+      "mae": null,
+      "median_absolute_error": null
+    }
+  },
+  "weekday_type_breakdown": {
+    "weekday": {
+      "rows": 1821723,
+      "mae": 0.829201,
+      "median_absolute_error": 0.5
+    },
+    "weekend": {
+      "rows": 662487,
+      "mae": 0.827677,
+      "median_absolute_error": 0.5
+    }
+  },
+  "limitations": [
+    "Holdout targets are observed sampled ticket demand, not total passengers or bus occupancy.",
+    "Matching and ticketing-channel coverage limitations propagate into this validation.",
+    "Time-aware coverage is limited to route-pattern-segment-time combinations observed before the cutoff."
+  ]
+}
