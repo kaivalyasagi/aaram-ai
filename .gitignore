@@ -221,3 +221,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Delhi GTFS dataset
+data/gtfs/
+
+# Python environment and cache
+.venv/
+__pycache__/
+*.pyc
