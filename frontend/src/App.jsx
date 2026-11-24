@@ -4,6 +4,7 @@ import "./App.css";
 import CrowdLens from "./components/CrowdLens";
 
 const API =
+  import.meta.env.VITE_JOURNEY_API_URL ||
   import.meta.env.VITE_API_BASE_URL ||
   "http://127.0.0.1:8001";
 
